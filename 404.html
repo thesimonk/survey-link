@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SurveyGen - redirecting...</title>
+<script>
+  // GitHub Pages serves this project site under /survey-link/ - strip that
+  // prefix before forwarding, so /survey-link/d/<token> correctly becomes
+  // <tunnel>/d/<token>, not <tunnel>/survey-link/d/<token> (which 404s -
+  // the real app has no /survey-link prefix in its routes). Harmless no-op
+  // on Cloudflare Pages, which serves this at the root instead.
+  //
+  // This target is a permanent Tailscale Funnel hostname (same tailnet
+  // device as the Dynamic Learning app, which owns port 443 - SurveyGen
+  // uses 8443 instead). It does not rotate on restart. Only touch this if
+  // the underlying machine's Tailscale device name or tailnet ever changes.
+  var target = "https://dls.taile279ee.ts.net:8443";
+  var path = location.pathname.replace(/^\/survey-link/, "");
+  location.replace(target + path + location.search);
+</script>
+<meta http-equiv="refresh" content="0; url=https://dls.taile279ee.ts.net:8443">
+</head>
+<body>
+<p>Redirecting to SurveyGen... if nothing happens, <a href="https://dls.taile279ee.ts.net:8443">click here</a>.</p>
+</body>
+</html>
